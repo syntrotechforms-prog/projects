@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Portal | Innovate & Build</title>
+    <meta name="description" content="Explore a wide range of internship projects across Cybersecurity, AI, Machine Learning, and more. Join Syntro Tech today.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <nav>
+        <div class="logo">SYNTRO<span>TECH</span></div>
+        <a href="#apply" class="btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Join Now</a>
+    </nav>
+
+    <header class="hero">
+        <h1>Shape the Future with <span class="gradient-text">High-Impact Projects</span></h1>
+        <p>Choose from over 100+ industry-level projects and build your career in emerging technologies.</p>
+        <div class="hero-btns">
+            <a href="#projects" class="btn-primary">Explore Projects</a>
+        </div>
+    </header>
+
+    <section id="projects" class="projects-section">
+        <div class="section-header">
+            <h2 class="gradient-text">Industry-Ready Projects</h2>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">Browse projects by domain and find your perfect match.</p>
+        </div>
+
+        <div class="category-filters" id="domain-filters">
+            <button class="filter-btn active" data-domain="all">All Domains</button>
+            <!-- Domains will be injected here -->
+        </div>
+
+        <div class="project-grid" id="project-container">
+            <!-- Projects will be injected here -->
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="#apply" class="btn-primary">Fill out the Form</a>
+        </div>
+    </section>
+
+    <section id="apply" class="form-section">
+        <div class="form-container">
+            <h2 style="margin-bottom: 2rem; text-align: center;">Enrollment <span class="gradient-text">Form</span></h2>
+            <form id="enrollment-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="+91 XXXXX XXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label for="college">College Name</label>
+                    <input type="text" id="college" class="form-control" placeholder="Your University/College" required>
+                </div>
+                <div class="form-group">
+                    <label for="domain-select">Selected Domain</label>
+                    <select id="domain-select" class="form-control" required>
+                        <option value="" disabled selected>Choose a Domain</option>
+                        <!-- Domains will be injected here -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="project-select">Project Selection</label>
+                    <select id="project-select" class="form-control" required disabled>
+                        <option value="" disabled selected>Select a domain first</option>
+                        <!-- Projects will be injected here based on domain -->
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+    <footer style="padding: 4rem 5%; text-align: center; border-top: 1px solid var(--card-border);">
+        <div class="logo" style="margin-bottom: 1rem;">SYNTRO<span>TECH</span></div>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Syntro Tech. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
