@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('enrollment-form');
     const loadMoreBtn = document.getElementById('load-more');
 
-    let currentLimit = 10;
+    let currentLimit = 30;
     let currentDomain = 'all';
 
     // Populate Domains in Filters and Select
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Render Projects
-    function renderProjects(filterDomain = 'all', limit = 10) {
+    function renderProjects(filterDomain = 'all', limit = 30) {
         projectContainer.innerHTML = '';
         let count = 0;
         let totalShown = 0;
@@ -69,14 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             e.target.classList.add('active');
             currentDomain = e.target.dataset.domain;
-            currentLimit = 10; // Reset limit on domain change
+            currentLimit = 30; // Reset limit on domain change
             renderProjects(currentDomain, currentLimit);
         }
     });
 
     // Load More Logic
     loadMoreBtn.addEventListener('click', () => {
-        currentLimit += 10;
+        currentLimit += 30;
         renderProjects(currentDomain, currentLimit);
     });
 
