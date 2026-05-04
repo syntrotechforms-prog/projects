@@ -256,8 +256,14 @@ footer {
         padding: 1rem 5%;
     }
 
+    nav .btn-primary {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+        width: auto; /* Prevent full-width on mobile if it's in the nav */
+    }
+
     .logo {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .hero {
