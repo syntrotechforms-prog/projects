@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const domainSelect = document.getElementById('domain-select');
     const projectSelect = document.getElementById('project-select');
     const form = document.getElementById('enrollment-form');
+    const loadMoreBtn = document.getElementById('load-more');
+
+    let currentLimit = 10;
+    let currentDomain = 'all';
 
     // Populate Domains in Filters and Select
     const domains = Object.keys(projectData);
@@ -26,33 +30,54 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Render Projects
-    function renderProjects(filterDomain = 'all') {
+    function renderProjects(filterDomain = 'all', limit = 10) {
         projectContainer.innerHTML = '';
+        let count = 0;
+        let totalShown = 0;
         
         for (const [domain, projects] of Object.entries(projectData)) {
             if (filterDomain !== 'all' && filterDomain !== domain) continue;
 
             projects.forEach(project => {
-                const card = document.createElement('div');
-                card.className = 'project-card';
-                card.innerHTML = `
-                    <div class="domain-tag">${domain}</div>
-                    <h3>${project}</h3>
-                `;
-                projectContainer.appendChild(card);
+                if (totalShown < limit) {
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+                    card.innerHTML = `
+                        <div class="domain-tag">${domain}</div>
+                        <h3>${project}</h3>
+                    `;
+                    projectContainer.appendChild(card);
+                    totalShown++;
+                }
+                count++;
             });
+        }
+
+        // Show/Hide Load More button
+        if (totalShown < count) {
+            loadMoreBtn.style.display = 'inline-block';
+        } else {
+            loadMoreBtn.style.display = 'none';
         }
     }
 
-    renderProjects();
+    renderProjects(currentDomain, currentLimit);
 
     // Filter Logic
     domainFilters.addEventListener('click', (e) => {
         if (e.target.classList.contains('filter-btn')) {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             e.target.classList.add('active');
-            renderProjects(e.target.dataset.domain);
+            currentDomain = e.target.dataset.domain;
+            currentLimit = 10; // Reset limit on domain change
+            renderProjects(currentDomain, currentLimit);
         }
+    });
+
+    // Load More Logic
+    loadMoreBtn.addEventListener('click', () => {
+        currentLimit += 10;
+        renderProjects(currentDomain, currentLimit);
     });
 
     // Dynamic Dropdown Logic
